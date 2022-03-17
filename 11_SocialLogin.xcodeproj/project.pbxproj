@@ -13,6 +13,8 @@
 		B6C0667727DDC0040021B407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C0667527DDC0040021B407 /* Main.storyboard */; };
 		B6C0667927DDC0070021B407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C0667827DDC0070021B407 /* Assets.xcassets */; };
 		B6C0667C27DDC0070021B407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C0667A27DDC0070021B407 /* LaunchScreen.storyboard */; };
+		D4D4D03627E332C600A4209C /* LoginUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4D03527E332C500A4209C /* LoginUIButton.swift */; };
+		D4D4D03827E3370E00A4209C /* EmailAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4D03727E3370E00A4209C /* EmailAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		B6C0667827DDC0070021B407 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6C0667B27DDC0070021B407 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6C0667D27DDC0070021B407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4D4D03527E332C500A4209C /* LoginUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIButton.swift; sourceTree = "<group>"; };
+		D4D4D03727E3370E00A4209C /* EmailAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				B6C0666F27DDC0040021B407 /* AppDelegate.swift */,
 				B6C0667127DDC0040021B407 /* SceneDelegate.swift */,
 				B6C0667327DDC0040021B407 /* ViewController.swift */,
+				D4D4D03727E3370E00A4209C /* EmailAddViewController.swift */,
+				D4D4D03527E332C500A4209C /* LoginUIButton.swift */,
 				B6C0667527DDC0040021B407 /* Main.storyboard */,
 				B6C0667827DDC0070021B407 /* Assets.xcassets */,
 				B6C0667A27DDC0070021B407 /* LaunchScreen.storyboard */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D4D03827E3370E00A4209C /* EmailAddViewController.swift in Sources */,
 				B6C0667427DDC0040021B407 /* ViewController.swift in Sources */,
+				D4D4D03627E332C600A4209C /* LoginUIButton.swift in Sources */,
 				B6C0667027DDC0040021B407 /* AppDelegate.swift in Sources */,
 				B6C0667227DDC0040021B407 /* SceneDelegate.swift in Sources */,
 			);

@@ -16,7 +16,6 @@ class ViewController: UIViewController {
         stack.distribution = .fill
         stack.spacing = 5
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.backgroundColor = .red
         return stack
     }()
     
@@ -39,15 +38,61 @@ class ViewController: UIViewController {
         return img
     }()
     
+    var loginStackView : UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 20
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    var googleBtn : LoginUIButton = {
+        let btn = LoginUIButton()
+        btn.setTitle("Google", for: .normal)
+        btn.setImage(UIImage(named: "logo_google"), for: .normal)
+        btn.addTarget(self, action: #selector(googleClick(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    var appleBtn : LoginUIButton = {
+        let btn = LoginUIButton()
+        btn.setTitle("Apple", for: .normal)
+        btn.setImage(UIImage(named: "logo_apple"), for: .normal)
+        btn.addTarget(self, action: #selector(appleClick(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    var emailBtn : LoginUIButton = {
+        let btn = LoginUIButton()
+        btn.setTitle("Email/PW", for: .normal)
+        btn.addTarget(self, action: #selector(emailClick(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewSet()
     }
-
-    func viewSet(){
-        self.view.backgroundColor = .black
-        self.navigationController?.isNavigationBarHidden = true
+    
+    @objc func googleClick(_ sender:Any){
+       
+    }
+    
+    @objc func appleClick(_ sender:Any){
         
+    }
+    
+    @objc func emailClick(_ sender:Any){
+        self.navigationController?.pushViewController(EmailAddViewController(), animated: true)
+    }
+
+    private func viewSet(){
+        self.view.backgroundColor = .black
+        self.title = "LOGIN"
+        
+        // info 생성
         self.view.addSubview(self.infoStackView)
         NSLayoutConstraint.activate([
             self.infoStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
@@ -61,6 +106,17 @@ class ViewController: UIViewController {
             self.Mimg.heightAnchor.constraint(equalTo: self.Mimg.widthAnchor)
         ])
         self.infoStackView.addArrangedSubview(self.Mtitle)
+        
+        // 로그인 버튼 생성
+        self.view.addSubview(self.loginStackView)
+        NSLayoutConstraint.activate([
+            self.loginStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            self.loginStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            self.loginStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25)
+        ])
+        self.loginStackView.addArrangedSubview(self.emailBtn)
+        self.loginStackView.addArrangedSubview(self.appleBtn)
+        self.loginStackView.addArrangedSubview(self.googleBtn)
     }
 }
 
