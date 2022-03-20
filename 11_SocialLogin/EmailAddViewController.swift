@@ -14,9 +14,15 @@ class EmailAddViewController : UIViewController {
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
-        stack.spacing = 10
+        stack.spacing = 15
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
+    }()
+    
+    var Mtitle : UILabel = {
+        let label = TitleUILabel()
+        label.text = "사용하실 Email/PW를 입력해주세요."
+        return label
     }()
     
     var emailTF : UITextField = {
@@ -27,6 +33,7 @@ class EmailAddViewController : UIViewController {
         tf.placeholder = "Email"
         tf.layer.cornerRadius = 25
         tf.layer.borderColor = UIColor.white.cgColor
+        tf.keyboardType = .emailAddress
         tf.layer.borderWidth = 0.5
         return tf
     }()
@@ -40,8 +47,10 @@ class EmailAddViewController : UIViewController {
         tf.layer.cornerRadius = 25
         tf.layer.borderColor = UIColor.white.cgColor
         tf.layer.borderWidth = 0.5
+        tf.isSecureTextEntry = true
         return tf
     }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,15 +58,23 @@ class EmailAddViewController : UIViewController {
     }
     
     @objc func okBtnClick(_ sender:Any){
+        self.navigationController?.pushViewController(MainViewController(), animated: true)
         
     }
 
     private func viewSet(){
         self.view.backgroundColor = .black
+        
+        // 네비게이션 부분
         self.title = "Email/PW"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .done, target: self, action: #selector(okBtnClick(_:)))
         self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationController?.isNavigationBarHidden = false
+        // 델리게이트 설정
+        self.pwTF.delegate = self
+        self.emailTF.delegate = self
         
+        // 오토 레이아웃
         self.view.addSubview(self.mainStackView)
         NSLayoutConstraint.activate([
             self.mainStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
@@ -65,11 +82,31 @@ class EmailAddViewController : UIViewController {
             self.mainStackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
         
+        self.mainStackView.addArrangedSubview(self.Mtitle)
         self.mainStackView.addArrangedSubview(self.emailTF)
         self.mainStackView.addArrangedSubview(self.pwTF)
         NSLayoutConstraint.activate([
             self.emailTF.heightAnchor.constraint(equalToConstant: 50),
             self.pwTF.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        // 이메일 부분으로 바로 가기
+        self.emailTF.becomeFirstResponder()
+    }
+}
+
+extension EmailAddViewController : UITextFieldDelegate {
+    
+    // return 키 눌렀을 때 키보드 내리기
+     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let email = self.emailTF.text == ""
+        let pw = self.pwTF.text == ""
+        
+        self.navigationItem.rightBarButtonItem?.isEnabled = !email && !pw
     }
 }

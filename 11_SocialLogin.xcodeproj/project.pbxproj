@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B61BB38927E6D0A400A04367 /* TitleUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61BB38827E6D0A400A04367 /* TitleUILabel.swift */; };
+		B61BB38B27E6D9C300A04367 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61BB38A27E6D9C300A04367 /* MainViewController.swift */; };
 		B6C0667027DDC0040021B407 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0666F27DDC0040021B407 /* AppDelegate.swift */; };
 		B6C0667227DDC0040021B407 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0667127DDC0040021B407 /* SceneDelegate.swift */; };
 		B6C0667427DDC0040021B407 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0667327DDC0040021B407 /* ViewController.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B61BB38827E6D0A400A04367 /* TitleUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleUILabel.swift; sourceTree = "<group>"; };
+		B61BB38A27E6D9C300A04367 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B6C0666C27DDC0040021B407 /* 11_SocialLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 11_SocialLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6C0666F27DDC0040021B407 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6C0667127DDC0040021B407 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +67,9 @@
 				B6C0666F27DDC0040021B407 /* AppDelegate.swift */,
 				B6C0667127DDC0040021B407 /* SceneDelegate.swift */,
 				B6C0667327DDC0040021B407 /* ViewController.swift */,
+				B61BB38827E6D0A400A04367 /* TitleUILabel.swift */,
 				D4D4D03727E3370E00A4209C /* EmailAddViewController.swift */,
+				B61BB38A27E6D9C300A04367 /* MainViewController.swift */,
 				D4D4D03527E332C500A4209C /* LoginUIButton.swift */,
 				B6C0667527DDC0040021B407 /* Main.storyboard */,
 				B6C0667827DDC0070021B407 /* Assets.xcassets */,
@@ -144,11 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B61BB38B27E6D9C300A04367 /* MainViewController.swift in Sources */,
 				D4D4D03827E3370E00A4209C /* EmailAddViewController.swift in Sources */,
 				B6C0667427DDC0040021B407 /* ViewController.swift in Sources */,
 				D4D4D03627E332C600A4209C /* LoginUIButton.swift in Sources */,
 				B6C0667027DDC0040021B407 /* AppDelegate.swift in Sources */,
 				B6C0667227DDC0040021B407 /* SceneDelegate.swift in Sources */,
+				B61BB38927E6D0A400A04367 /* TitleUILabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,13 +20,8 @@ class ViewController: UIViewController {
     }()
     
     var Mtitle : UILabel = {
-        let label = UILabel()
+        let label = TitleUILabel()
         label.text = "소셜로그인으로 편하게 로그인 할 수 있어요!\n아래 버튼을 눌러 로그인 방법을 선택하세요."
-        label.font = UIFont.boldSystemFont(ofSize: 23)
-        label.numberOfLines = .max
-        label.textAlignment = .center
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
