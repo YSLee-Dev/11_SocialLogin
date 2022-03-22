@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSet()
+        self.userInfo()
     }
     
     @objc private func logoutBtnClick(_ sender:Any){
@@ -49,5 +51,10 @@ class MainViewController: UIViewController {
             self.backBtn.topAnchor.constraint(equalTo: self.Mtitle.bottomAnchor, constant: -15),
             self.backBtn.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    private func userInfo(){
+        let email = Auth.auth().currentUser?.email ?? "고객"
+        Mtitle.text = "환영합니다. \(email)님"
     }
 }

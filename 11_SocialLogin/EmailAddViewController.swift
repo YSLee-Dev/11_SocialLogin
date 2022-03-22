@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class EmailAddViewController : UIViewController {
     
@@ -21,6 +22,7 @@ class EmailAddViewController : UIViewController {
     
     var Mtitle : UILabel = {
         let label = TitleUILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.text = "사용하실 Email/PW를 입력해주세요."
         return label
     }()
@@ -58,8 +60,16 @@ class EmailAddViewController : UIViewController {
     }
     
     @objc func okBtnClick(_ sender:Any){
-        self.navigationController?.pushViewController(MainViewController(), animated: true)
         
+        //Firebase 이메일, 비밀번호 인증
+        let email = emailTF.text ?? ""
+        let pw = pwTF.text ?? ""
+        
+        // 신규 사용자 생성
+        Auth.auth().createUser(withEmail: email, password: pw) {[weak self] authResult, error in
+            guard let self = self else{return}
+            self.navigationController?.pushViewController(MainViewController(), animated: true)
+        }
     }
 
     private func viewSet(){
