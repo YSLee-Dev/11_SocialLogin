@@ -30,7 +30,14 @@ class MainViewController: UIViewController {
     }
     
     @objc private func logoutBtnClick(_ sender:Any){
-        self.navigationController?.popToRootViewController(animated: true)
+        let firebaseAuth = Auth.auth()
+        
+        do{
+            try firebaseAuth.signOut()
+            self.navigationController?.popToRootViewController(animated: true)
+        }catch let signOutError as NSError{
+            print("Error: \(signOutError.localizedDescription)")
+        }
     }
     
     private func viewSet(){

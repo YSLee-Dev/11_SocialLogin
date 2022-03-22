@@ -68,7 +68,20 @@ class EmailAddViewController : UIViewController {
         // 신규 사용자 생성
         Auth.auth().createUser(withEmail: email, password: pw) {[weak self] authResult, error in
             guard let self = self else{return}
-            self.navigationController?.pushViewController(MainViewController(), animated: true)
+            
+            if let error = error{
+                let code = (error as NSError).code
+                
+                switch code{
+                case 17007: // 이미 가입한 계정일 때
+                    // 로그인 하기
+                    self.loginUser(email: email, pw: pw)
+                default:
+                    self.Mtitle.text = error.localizedDescription
+                }
+            }else{
+                self.navigationController?.pushViewController(MainViewController(), animated: true)
+            }
         }
     }
 
@@ -102,6 +115,18 @@ class EmailAddViewController : UIViewController {
         
         // 이메일 부분으로 바로 가기
         self.emailTF.becomeFirstResponder()
+    }
+    
+    private func loginUser(email:String, pw:String){
+        Auth.auth().signIn(withEmail: email, password: pw){[weak self] _, error in
+            guard let self = self else {return}
+            
+            if let error = error {
+                self.Mtitle.text = error.localizedDescription
+            }else{
+                self.navigationController?.pushViewController(MainViewController(), animated: true)
+            }
+        }
     }
 }
 
