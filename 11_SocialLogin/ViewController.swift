@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -72,7 +74,24 @@ class ViewController: UIViewController {
     }
     
     @objc func googleClick(_ sender:Any){
-       
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let signInConfig = GIDConfiguration.init(clientID: clientID)
+        
+        GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self){user, error in
+            guard error == nil else { return }
+            
+            guard let authentication = user?.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken!, accessToken: authentication.accessToken)
+            // access token 부여 받음
+
+            // 파이어베이스에 인증정보 등록
+            Auth.auth().signIn(with: credential) {_,_ in
+            // token을 넘겨주면, 성공했는지 안했는지에 대한 result값과 error값을 넘겨줌
+                self.navigationController?.pushViewController(MainViewController(), animated: true)
+            }
+            
+        }
+        
     }
     
     @objc func appleClick(_ sender:Any){
@@ -112,6 +131,7 @@ class ViewController: UIViewController {
         self.loginStackView.addArrangedSubview(self.emailBtn)
         self.loginStackView.addArrangedSubview(self.appleBtn)
         self.loginStackView.addArrangedSubview(self.googleBtn)
+        
     }
 }
 

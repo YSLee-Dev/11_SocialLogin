@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     var Mtitle : UILabel = {
         let label = TitleUILabel()
         label.text = "환영합니다."
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
