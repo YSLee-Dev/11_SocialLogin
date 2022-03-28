@@ -20,7 +20,7 @@ class EmailAddViewController : UIViewController {
         return stack
     }()
     
-    var Mtitle : UILabel = {
+    var Mtitle : TitleUILabel = {
         let label = TitleUILabel()
         label.adjustsFontSizeToFitWidth = true
         label.text = "사용하실 Email/PW를 입력해주세요."

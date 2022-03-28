@@ -10,17 +10,24 @@ import FirebaseAuth
 
 class MainViewController: UIViewController {
 
-    var Mtitle : UILabel = {
+    var Mtitle : TitleUILabel = {
         let label = TitleUILabel()
         label.text = "환영합니다."
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
-    var backBtn : UIButton = {
+    var backBtn : LoginUIButton = {
         let btn = LoginUIButton()
         btn.setTitle("LOGOUT", for: .normal)
         btn.addTarget(self, action: #selector(logoutBtnClick(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    var pwResetBtn : LoginUIButton = {
+        let btn = LoginUIButton()
+        btn.setTitle("PASSWORD RESET", for: .normal)
+        btn.addTarget(self, action: #selector(pwResetBtnClick(_:)), for: .touchUpInside)
         return btn
     }()
     
@@ -41,6 +48,16 @@ class MainViewController: UIViewController {
         }
     }
     
+    @objc private func pwResetBtnClick(_ sender:Any){
+        let email = Auth.auth().currentUser?.email ?? ""
+        Auth.auth().sendPasswordReset(withEmail: email){ error in
+            if error != nil {return}
+            let alert = UIAlertController(title: "메일 발송됨", message: "비밀번호 초기화 메일이 발송되었습니다.\n메일을 확인해주세요.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
     private func viewSet(){
         // 네비게이션 바 숨김, 제스처 비활성화
         self.navigationController?.isNavigationBarHidden = true
@@ -52,12 +69,22 @@ class MainViewController: UIViewController {
             self.Mtitle.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
         
+        // 유저 로그인 방식 확인
+        let userLoginType = Auth.auth().currentUser?.providerData[0].providerID == "password"
+        self.pwResetBtn.isHidden = !userLoginType
+        
         self.view.addSubview(self.backBtn)
+        self.view.addSubview(self.pwResetBtn)
         NSLayoutConstraint.activate([
             self.backBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             self.backBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            self.backBtn.topAnchor.constraint(equalTo: self.Mtitle.bottomAnchor, constant: -15),
-            self.backBtn.heightAnchor.constraint(equalToConstant: 50)
+            self.backBtn.topAnchor.constraint(equalTo: self.Mtitle.bottomAnchor, constant: 15),
+            self.backBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            self.pwResetBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            self.pwResetBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            self.pwResetBtn.topAnchor.constraint(equalTo: self.backBtn.bottomAnchor, constant: 15),
+            self.pwResetBtn.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     

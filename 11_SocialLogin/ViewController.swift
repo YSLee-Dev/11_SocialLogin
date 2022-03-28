@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         return stack
     }()
     
-    var Mtitle : UILabel = {
+    var Mtitle : TitleUILabel = {
         let label = TitleUILabel()
         label.text = "소셜로그인으로 편하게 로그인 할 수 있어요!\n아래 버튼을 눌러 로그인 방법을 선택하세요."
         return label
