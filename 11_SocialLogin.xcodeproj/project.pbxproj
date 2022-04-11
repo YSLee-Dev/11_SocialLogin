@@ -13,7 +13,7 @@
 		B6C0667727DDC0040021B407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C0667527DDC0040021B407 /* Main.storyboard */; };
 		B6C0667927DDC0070021B407 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6C0667827DDC0070021B407 /* Assets.xcassets */; };
 		B6C0667C27DDC0070021B407 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6C0667A27DDC0070021B407 /* LaunchScreen.storyboard */; };
-		D47C3B5827E8804E00B0DB34 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D47C3B5727E8804E00B0DB34 /* GoogleService-Info.plist */; };
+		D4238C5328042E3400B197E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4238C5228042E3400B197E6 /* GoogleService-Info.plist */; };
 		D4C07A8427ED51AB000C64A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C0666F27DDC0040021B407 /* AppDelegate.swift */; };
 		D4D4D03627E332C600A4209C /* LoginUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4D03527E332C500A4209C /* LoginUIButton.swift */; };
 		D4D4D03827E3370E00A4209C /* EmailAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4D03727E3370E00A4209C /* EmailAddViewController.swift */; };
@@ -34,7 +34,7 @@
 		B6C0667D27DDC0070021B407 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAA4707A960A746754DB2E5B /* Pods_11_SocialLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_11_SocialLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4238C5127FEE66400B197E6 /* 11_SocialLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = 11_SocialLogin.entitlements; sourceTree = "<group>"; };
-		D47C3B5727E8804E00B0DB34 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4238C5228042E3400B197E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4D4D03527E332C500A4209C /* LoginUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIButton.swift; sourceTree = "<group>"; };
 		D4D4D03727E3370E00A4209C /* EmailAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAddViewController.swift; sourceTree = "<group>"; };
 		D4E0203B27E8026500B9FE3D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				B6C0667527DDC0040021B407 /* Main.storyboard */,
 				B6C0667827DDC0070021B407 /* Assets.xcassets */,
 				B6C0667A27DDC0070021B407 /* LaunchScreen.storyboard */,
-				D47C3B5727E8804E00B0DB34 /* GoogleService-Info.plist */,
+				D4238C5228042E3400B197E6 /* GoogleService-Info.plist */,
 				B6C0667D27DDC0070021B407 /* Info.plist */,
 			);
 			path = 11_SocialLogin;
@@ -169,9 +169,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C0667C27DDC0070021B407 /* LaunchScreen.storyboard in Resources */,
+				D4238C5328042E3400B197E6 /* GoogleService-Info.plist in Resources */,
 				B6C0667927DDC0070021B407 /* Assets.xcassets in Resources */,
 				B6C0667727DDC0040021B407 /* Main.storyboard in Resources */,
-				D47C3B5827E8804E00B0DB34 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +391,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -424,6 +425,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -66,7 +66,8 @@ class MainViewController: UIViewController {
         self.view.addSubview(self.Mtitle)
         NSLayoutConstraint.activate([
             self.Mtitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.Mtitle.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            self.Mtitle.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.Mtitle.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.9)
         ])
         
         // 유저 로그인 방식 확인
