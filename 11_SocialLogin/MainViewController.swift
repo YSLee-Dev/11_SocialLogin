@@ -31,6 +31,13 @@ class MainViewController: UIViewController {
         return btn
     }()
     
+    var profileBtn : LoginUIButton = {
+        let btn = LoginUIButton()
+        btn.setTitle("PROFILE UPDATE", for: .normal)
+        btn.addTarget(self, action: #selector(profileBtnClick(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewSet()
@@ -58,6 +65,21 @@ class MainViewController: UIViewController {
         }
     }
     
+    @objc private func profileBtnClick(_ sender:Any){
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        
+        let alert = UIAlertController(title: "NAME INSERT", message: nil, preferredStyle: .alert)
+        alert.addTextField()
+        alert.addAction(UIAlertAction(title: "OK", style: .default){ _ in
+            changeRequest?.displayName = alert.textFields?[0].text
+            changeRequest?.commitChanges{[weak self] _ in
+                self?.Mtitle.text = Auth.auth().currentUser?.displayName ?? "환영합니다. 고객님"
+            }
+        })
+        self.present(alert, animated: true)
+        
+    }
+    
     private func viewSet(){
         // 네비게이션 바 숨김, 제스처 비활성화
         self.navigationController?.isNavigationBarHidden = true
@@ -76,6 +98,7 @@ class MainViewController: UIViewController {
         
         self.view.addSubview(self.backBtn)
         self.view.addSubview(self.pwResetBtn)
+        self.view.addSubview(self.profileBtn)
         NSLayoutConstraint.activate([
             self.backBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             self.backBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
@@ -85,7 +108,12 @@ class MainViewController: UIViewController {
             self.pwResetBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             self.pwResetBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             self.pwResetBtn.topAnchor.constraint(equalTo: self.backBtn.bottomAnchor, constant: 15),
-            self.pwResetBtn.heightAnchor.constraint(equalToConstant: 50)
+            self.pwResetBtn.heightAnchor.constraint(equalToConstant: 50),
+            
+            self.profileBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            self.profileBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            self.profileBtn.topAnchor.constraint(equalTo: self.pwResetBtn.bottomAnchor, constant: 15),
+            self.profileBtn.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
